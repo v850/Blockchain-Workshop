@@ -1,0 +1,77 @@
+
+---------------------
+Unix
+---------------------
+sudo apt-get install software-properties-common
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install ethereum
+
+verify: geth version
+
+---------------------
+geth --datadir db1 init genesis.json
+
+geth --datadir "./db1" --networkid 123456 --rpc --rpcport "8545"  --rpccorsdomain "*"  --port 30305 "--allow-insecure-unlock" --nodiscover --rpcapi="admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --ipcdisable console
+
+eth.accounts
+eth.blockNumber
+
+personal.newAccount()  
+
+eth.accounts
+eth.blockNumber
+
+eth.getBalance(eth.accounts[0])
+
+miner.start() 
+miner.stop()  
+
+eth.getBalance(eth.accounts[0])
+
+acc1 = eth.accounts[0]
+eth.getBalance(acc1)
+
+eth.blockNumber
+
+web3.fromWei(eth.getBalance(eth.accounts[0]))
+
+-----------------------------------------------------------------------------------------------------
+
+personal.newAccount("123")  
+
+eth.accounts
+eth.getBalance(eth.accounts[1])
+
+eth.sendTransaction({from:eth.accounts[0], to:eth.accounts[1], value: web3.toWei(10, "ether")})
+
+personal.unlockAccount(eth.accounts[0], "abc", 1000)
+eth.sendTransaction({from:eth.accounts[0], to:eth.accounts[1], value: web3.toWei(10, "ether")})
+
+eth.getBalance(eth.accounts[1])
+
+eth.pendingTransactions
+
+-------------------------------------------------------------------------------------------------------
+
+geth --datadir db2 init genesis.json
+
+geth --datadir "./db2" --networkid 123456 --rpc --rpcport "8546"  --rpccorsdomain "*"  --port 30306 --nodiscover --rpcapi="admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --ipcdisable console
+
+personal.newAccount("0000")  
+
+eth.accounts
+eth.getBalance(eth.accounts[0])
+
+admin.nodeInfo.enode
+
+admin.addPeer("
+
+eth.sendTransaction({from:"0x7684e2fbf171321fadc5f673ae70c565f26220da", to:"0x4e2c8dd8ff4ddc369d9288b4d8c48ac36f6b61b9", value:web3.toWei(10, "ether")})
+
+---------------------------------
+
+
+
+
+
